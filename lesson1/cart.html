@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- 1. Создать параграф, внутри которого будет отображаться текст
+“Товаров в корзине 0”
+2. Создать кнопку “Купить”, при клике на которую, значение внутри
+параграфа будет увеличиваться на 1, при повторном нажатии на эту
+кнопку, счетчик не становится больше, добавить 4 таких кнопки
+3. При нажатии на кнопку купить, необходимо чтобы текст внутри
+кнопки поменялся на “Товар в Корзине” -->
+
+    <div id="app">
+      <p>Товаров в корзине {{ countProduct }}</p>
+      <!-- в блоке мы перебираем массив с продуктами для отрисовки на экране 
+          v-for(цикл фор) и обязательный атрибут :key, который хранит уникальное значение, напр. id., это нужно для корректной работы и реактивности во vue.js потому что он кеширует данный компонент -->
+      <div v-for="product in listProduct" :key="product.id" class="cartBox">
+        <p>
+          {{product.name }} - Price:{{product.price}} - Amount:
+          {{product.amount}}
+        </p>
+        <button @click="addProduct(product)">{{product.buttonText}}</button>
+      </div>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        data() {
+          return {
+            countProduct: 0,
+            listProduct: [
+              {
+                id: 1,
+                name: "product1",
+                price: 50,
+                inCart: false,
+                amount: 0,
+                buttonText: "Купить",
+              },
+              {
+                id: 2,
+                name: "product2",
+                price: 100,
+                inCart: false,
+                amount: 0,
+                buttonText: "Купить",
+              },
+              {
+                id: 3,
+                name: "product3",
+                price: 200,
+                inCart: false,
+                amount: 0,
+                buttonText: "Купить",
+              },
+              {
+                id: 4,
+                name: "product4",
+                price: 300,
+                inCart: false,
+                amount: 0,
+                buttonText: "Купить",
+              },
+            ],
+          };
+        },
+        methods: {
+          addProduct(product) {
+            //метод добавления только одного товара
+            if (product.inCart === false) {
+              this.countProduct++;
+              product.buttonText = "Товар в корзине";
+              product.inCart = true;
+            }
+          },
+
+          addAmountProduct(product) {
+            this.countProduct++;
+            product.amount++;
+          },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

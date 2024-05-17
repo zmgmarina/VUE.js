@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- 1. Создать кнопку "Перевернуть". При клике на кнопку текст кнопки должен перевернуться и отобразиться в обратном порядке.
+    -->
+
+    <div id="app">
+      <button @click="reversText()">{{ message }}</button>
+   
+
+      <!-- 2. Есть список элементов. Пользователь может добавлять новые элементы списка с текстом “Новый элемент списка” нажав на кнопку "Добавить".
+    3  . *Дополнительное задание: При клике на элемент списка он должен быть удален. (по желанию)  -->
+      
+      <div v-for="item in listItems" :key="item">
+
+        <p @click="deleteItem"> {{ item.name }}</p>
+         
+      </div>
+     
+      <button @click="addNewItem">Добавить</button>
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        data() {
+          return {
+            message: 'Перевернуть',
+            
+            listItems: [
+              {
+                id: 1,
+                name: "item1",
+              },
+              {
+                id: 2,
+                name: "item2",
+                
+              },
+              {
+                id: 3,
+                name: "item3",
+              },
+              {
+                id: 4,
+                name: "item4",
+              },
+            ],
+
+            newItem: {
+                name: "Новый элемент списка"
+            }
+          }
+        },
+        methods: {
+            reversText() {
+                this.message = this.message.split('').reverse().join('')
+            },
+            
+            addNewItem() {
+                this.listItems.push(this.newItem);
+            },
+            deleteItem(e) {
+                e.target.remove();
+            }
+       },
+    }).mount("#app");
+    </script>
+  </body>
+</html>
