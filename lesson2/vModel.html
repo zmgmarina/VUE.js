@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- моделируем данные через поле ввода и передаем в заголовок
+    -->
+
+    <div id="app">
+      <h2>{{ modelData }}</h2>
+      <input type="text" v-model.lazy="modelData">
+      <button @click="headingText">click heading</button>
+
+      <!-- КАЛЬКУЛЯТОР -->
+
+      <h1>калькулятор</h1>
+      <input type="text" v-model.number="firstNumber">
+      <input type="text" v-model.number="secondNumber">
+      =
+      {{ result }}
+      <div>
+        <button @click="add">+</button>
+        <button @click="minus">-</button>
+        <button @click="mult">*</button>
+        <button @click="div">/</button>
+      </div>
+      <br><br>
+
+        <!-- КОНСТРУКТОР -->
+      <h1>конструктор</h1>
+      <input type="text" v-model="blockWidth">
+      <input type="text" v-model="blockColor">
+      <div class="block" :style="change">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+      </div>
+
+        
+
+    <script>
+      const { createApp, ref } = Vue;
+
+      createApp({
+        data() {
+          return {
+            modelData:'',
+            firstNumber: 0,
+            secondNumber: 0,
+            result: 0,
+            blockColor: '#ccc',
+            blockWidth: 100
+
+          }
+        },
+        methods: {
+          headingText() {
+            if (this.modelData === '') {
+              this.modelData = 'Заголовок для блока'
+            }
+          },
+          add() {
+            this.result = this.firstNumber + this.secondNumber
+          },
+          minus() {
+            this.result = this.firstNumber - this.secondNumber
+          },
+          mult() {
+            this.result = this.firstNumber * this.secondNumber
+          },
+          div() {
+            this.result = this.firstNumber / this.secondNumber
+          },
+       },
+       computed: {
+        change() {
+          return {
+            width: `${this.blockWidth}px`,
+            height: `${this.blockWidth}px`,
+            backgroundColor: this.blockColor
+          }
+        }
+       }
+    }).mount("#app");
+    </script>
+  </body>
+</html>

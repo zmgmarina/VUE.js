@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
+  <style>
+    /* плавное появление текста */
+    @keyframes vision {
+      from {
+        opacity: 0; /* изначально текст не виден */
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    .animate {
+      animation: vision 1s ease-in-out; 
+    }
+  </style>
   <body>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
@@ -15,15 +29,19 @@
 “Доступ закрыт” -->
 
     <div id="app">
-      <button @click="isTrue=true">Мне исполнилось 14 лет</button>
-      <button @click="isTrue=false">Мне еще нет 14 лет</button>
-      <div v-if="isTrue" class="result">Content 14+</div>
-      <div v-else class="result">Доступ закрыт</div>
+      <button @click="canBuy=!canBuy">Мне исполнилось 14 лет</button>
+      <button @click="cantBuy=!cantBuy">Мне еще нет 14 лет</button>
+      <div v-if="canBuy">Content 14+</div>
+      <div v-if="cantBuy">Доступ закрыт</div>
+      <!-- <div v-else class="result"></div> -->
 
+      <hr>
+      <br>
       <!-- Создать кнопку “Показать еще” при клике на которую появляется контент под кнопкой, при повторном клике, контент необходимо скрыть. Здесь используем переключатель showContent() = !showContent() нажали - показан контент, нажали - не показан -->
-      <button @click="showContent = !showContent">Показать еще</button>
-      <div v-if="showContent">Еще контент</div>
-
+      <button @click="showContent = !showContent">Показать текст</button>
+      <div class="animate" v-if="showContent">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis architecto facere dolores ut iste officia illo accusantium veniam ad quis, porro perspiciatis eos. Officia, quo nostrum? Fugiat ad sint non.</div>
+      <hr>
+      <br>
       <!-- 1. Создайте кнопку "Генерировать случайное число". При клике на
         кнопку должно отображаться случайное число в заданном диапазоне (например, от 1 до 10).
         2. При клике на кнопку, если полученное значение меньше 5, необходимо вывести на страницу, “Число меньше 5”
@@ -42,14 +60,15 @@
       createApp({
         data() {
           return {
-            isTrue: true,
+            canBuy: false,
+            cantBuy: false,
             showContent: false,
             number: 0,
           };
         },
         methods: {
           randomNumber() {
-            this.number = Math.floor(Math.random() * 10 + 1);
+            this.number = Math.floor(Math.random() * 10 + 1); //диапазон 10, +1 чтобы влючено число 10
           },
         },
         computed: {

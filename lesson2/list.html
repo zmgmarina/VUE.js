@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- моделируем данные через поле ввода и передаем в заголовок
+    -->
+
+    <div id="app">
+
+      <h1>list</h1>
+  <ul>
+    <li v-for="item in listItems" :key="item.id">
+      {{ item }}
+    </li>
+  </ul>
+  <input type="text" v-model="newList" @keyup.enter="addItem" />
+  <!-- нажимаем на клавишу enter, метод add() добавит текст в массив и отрисует на странице -->
+     
+ 
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        data() {
+          return {
+            listItems: [1, 2, 4],
+            newList: '',
+          }
+        },
+        methods: {
+         addItem() {
+          this.listItems.push(this.newList);
+          this.newList = '' //очистили поле ввода
+         }
+       },
+       
+    }).mount("#app");
+    </script>
+  </body>
+</html>

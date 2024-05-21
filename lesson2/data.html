@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        .like {
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+      <div id="app">
+   <!--шаблонизация - создали шаблон, затем с помощью цикла for создали 2 аналогичных блока, кнопку - она добавится везде-->
+     <article v-for="article in data" :key="article.id" class="article">  <!-- статья-->
+        <h2 class="article__title">{{ article.title }}</h2>
+        <p class="article__text">{{ article.text }}</p>
+        <button class="btn" @click="likeToggle = !likeToggle" :class="{like: likeToggle}">like</button>
+         <!--@click="likeToggle = !likeToggle" - при клике работате переключатель(меняется значение)
+            {like: likeToggle} - like в ситуации когда likeToggle-->
+     </article> 
+ 
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        data() {
+          return {
+            likeToggle: false, //переключатель класса .like (выбран - выбран-изменился цвет/ не выбран)
+            data: [
+                {
+                    title: 'title text',
+                    text: 'description text...'
+                },
+                {
+                    title: 'new title text',
+                    text: 'new description text...'
+                }
+            ]
+          }
+        },
+        methods: {
+         addItem() {
+          this.listItems.push(this.newList);
+          this.newList = '' //очистили поле ввода
+         }
+       },
+       
+    }).mount("#app");
+    </script>
+  </body>
+</html>

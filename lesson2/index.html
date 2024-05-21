@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <title>Document</title>
+  </head>
+  <style>
+    .product {
+    border: 1px solid black;
+    padding: 2px;
+    max-width: 250px;
+    padding-left: 50px;
+}
+  </style>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Вы разрабатываете страницу для отображения
+информации о товаре. У вас есть объект product, который
+содержит информацию о товаре, включая название, цену
+и URL изображения товара. Вам необходимо отобразить
+эту информацию на странице с использованием v-bind.
+2. Добавьте кнопку, которая будет изменять цену товара. При
+нажатии на кнопку должна генерироваться скидка на
+товар от 1 до 20% и обновиться цена товара в
+соответствии с значением скидки
+    -->
+
+    <div id="app">
+
+  <!-- <div v-for="item in product" :key="item.id">
+    {{ item }} 
+  </div> -->
+  <div class="product">
+    <h2>{{ product.name }}</h2>
+  <!-- здесь мы забиндили картинку  -->
+  <img width="200" :src="product.url" :alt="product.name">
+  
+  <p>Price: {{priceWihthDiscount}}</p>
+  <button :disabled="isDisabled" @click="getDiscount">Скидка</button>
+
+  </div>
+  
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        data() {
+          return {
+            discount: 0,
+            isDisabled: false,
+            product: {
+                name: 'Phone',
+                price: 25000,
+                url: "https://img.razrisyika.ru/kart/127/507521-sotovyy-telefon-6.jpg"
+            },
+          }
+
+        },
+        methods: {
+         addItem() {
+          this.listItems.push(this.newList);
+          this.newList = '' //очистили поле ввода
+         },
+
+          getDiscount() {
+          this.discount = Math.floor(Math.random() * 20);
+          this.isDisabled = true
+        }//рандомно получаем скидку в диапазоне 20
+       },
+       computed: {
+        priceWihthDiscount() {
+            return this.product.price - ((this.product.price * this.discount) / 100);
+            
+        }
+      }
+    }).mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Здесь у нас есть простой список todo - попробуйте реализовать логику для методов addTodo() и removeTodo(), чтобы заставить его работать!
+    -->
+
+    <div id="app">
+
+      <form @submit.prevent="addTodo">
+        <input v-model="newTodo" required placeholder="new todo">
+        <button>Добавить задачу</button>
+      </form>
+      <ul>
+        <li v-for="todo in todos" :key="todo.id">
+          {{ todo.text }}
+          <button @click="removeTodo(todo)">X</button>
+        </li>
+      </ul>
+
+    <script>
+      let id = 0
+      const { createApp, ref } = Vue;
+      createApp({
+        data() {
+          return {
+            newTodo: '',
+      todos: [
+        { id: id++, text: 'Изучить HTML' },
+        { id: id++, text: 'Изучить JavaScript' },
+        { id: id++, text: 'Изучить Vue' }
+      ]
+    }
+  },
+  methods: {
+    addTodo() {
+      this.todos.push({ id: id++, text: this.newTodo })
+      this.newTodo = ''
+    },
+    removeTodo(todo) {
+      this.todos = this.todos.filter((t) => t !== todo)
+      }
+    }
+    }).mount("#app");
+    </script>
+  </body>
+</html>

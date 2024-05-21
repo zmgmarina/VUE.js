@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="blogStyle.css" />
+  </head>
+  <body>
+    <header class="header center">
+      <div class="header__header-brand">
+        <a href="page.html" class="header__logo-brand"
+          ><img src="image/Logo.svg" alt="logo-brand"
+        /></a>
+        <h2 class="header__name-brand">Interno</h2>
+      </div>
+
+      <nav class="header__menu">
+        <a class="header__menu-link" href="#">Project</a>
+        <a class="header__menu-link" href="#">Blog</a>
+        <a class="header__menu-link" href="#">Home</a>
+      </nav>
+    </header>
+
+    <div class="banner">
+      <div class="banner__content">
+        <div class="banner__title-content">
+            <h2 class="banner__heading">Articles & News</h2>
+            <ul class="banner__breadcrumbs">
+                <li class="banner__breadcrumbs-item">
+                    <a href="page.html" class="banner__breadcrumbs-link">Home</a>
+                </li>
+                <li class="banner__breadcrumbs-item">
+                    <a href="#" class="banner__breadcrumbs-link">Blog</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+    <div class="section-news center">
+      <h2 class="section-news__title-box-news">Latest Post</h2>
+      <div class="section-news__section-post">
+        <img src="image/ImagePost.jpg" alt="" />
+        <div class="section-news__section-info">
+          <h2 class="section-news__title-news">
+            Low Cost Latest Invented Interior Designing Ideas
+          </h2>
+          <div class="section-news__text">
+            <p>
+              Lorem ipsum dolor sit amet, adipiscing Aliquam eu sem vitae turpis
+              dignissim maximus.posuere in.Contrary to popular belief.
+            </p>
+            <p>
+              Lorem Ipsum is not simply random text. It has roots in a piece of
+              classica.
+            </p>
+          </div>
+          <div class="section-news__date-button">
+            <p class="section-news__date">26 December,2022</p>
+            <button class="section-news__button-next">
+              <svg
+                width="52"
+                height="52"
+                viewBox="0 0 71 70"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="35.5" cy="35" r="35" fill="#F4F0EC" />
+                <path
+                  d="M32.5 44L40.5 35L32.5 26"
+                  stroke="#292F36"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-news__title-box-news">Articles & News</h2>
+
+      <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+      <div id="app">
+        <div class="section-news__news-box">
+          <div
+            v-for="item in data"
+            key="item.id"
+            class="section-news__box-item"
+          >
+            <img
+              class="section-news__image-design"
+              :src="item.img"
+              :alt="item.alt"
+            />
+            <div class="section-news__tag">{{ item.tag }}</div>
+            <p class="section-news__title-news">{{ item.title }}</p>
+            <div class="section-news__lower-block">
+              <p class="section-news__date">{{ item.date}}</p>
+
+              <button class="section-news__button-next">
+                <svg
+                  width="52"
+                  height="52"
+                  viewBox="0 0 71 70"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle cx="35.5" cy="35" r="35" fill="#F4F0EC" />
+                  <path
+                    d="M32.5 44L40.5 35L32.5 26"
+                    stroke="#292F36"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <ul class="section-news__pagination-box">
+          <a
+            href="#"
+            class="section-news__pagination-item news__pagination-item"
+            >01</a
+          >
+          <a href="#" class="section-news__pagination-item">02</a>
+          <a href="#" class="section-news__pagination-item">03</a>
+          <a href="#" class="section-news__pagination-item">
+            <svg
+              class="section-news__pagination-image"
+              width="9"
+              height="16"
+              viewBox="0 0 9 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.55714 15L7.5 8.31429L1.55714 1.62857"
+                stroke="#292F36"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
+        </ul>
+      </div>
+    </div>
+
+    <footer class="footer center">
+      <div class="footer__logo">
+        <div class="footer__logo-brand">
+          <a href="page.html"><img src="image/Logo.svg" alt="logo-brand" /></a>
+          <h2 class="footer__name-brand">Interno</h2>
+        </div>
+        <p class="footer__text">
+          It is a long established fact that a reader will be distracted
+          lookings.
+        </p>
+        <div class="footer__socialNetwork-link">
+          <a href=""><img src="image/twitter.svg" alt="" /></a>
+          <p class="footer__in">in</p>
+        </div>
+      </div>
+      <div class="footer__page">
+        <p class="footer__title-pages">Pages</p>
+        <a class="footer__page-link" href="page.html">Home</a>
+        <a class="footer__page-link" href="#">Project</a>
+        <a class="footer__page-link" href="#">Blog</a>
+      </div>
+      <div class="footer__contacts">
+        <p class="footer__title-contact">Contact</p>
+        <p>55 East Birchwood Ave. Brooklyn, New York 11201</p>
+        <p>contact@interno.com</p>
+        <p>(123) 456 - 7890</p>
+      </div>
+    </footer>
+    <script src="blog.js"></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Вы разрабатываете простое приложение для отображения списка товаров. У вас есть массив объектов товаров, где каждый объект представляет один товар с его названием и ценой. Вам необходимо отобразить список товаров,
+    предоставить возможность изменять количество каждого
+    товара и отмечать товары, которые уже куплены.
+    -->
+
+    <div id="app">
+    <h1>Список продуктов</h1>
+  <div >
+    <div class="product">
+      <ul>
+        <li v-for="product in products" :key="product.id">
+          <input type="text" v-model.number="product.amount">
+          <label>
+            <input type="checkbox">
+            {{ product.name }}
+          </label>
+        </li>
+      </ul>
+
+        
+
+      <!-- еще вариант
+        
+        <input type="number" v-model.number="item.quantity">
+      <input type="checkbox" v-model="item.bought" type="text">
+      <span>{{item.name}}</span> -->
+    
+    
+  </div>
+  <!-- <button @click="getDiscount">Get discount</button>
+  <p>Стоимость со скидкой: {{priceWihthDiscount}}</p> -->
+    
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        data() {
+          return {
+              products: [
+            
+              {
+                name: 'Milk',
+                price: 90,
+                amount: 2,
+                bought: false,
+              },
+              {
+                name: 'Apple',
+                price: 150,
+                amount: 1,
+                bought: false,
+              },
+              {
+                name: 'Bread',
+                price: 50,
+                amount: 3,
+                bought: false,
+              },
+              {
+                name: 'Сheese',
+                price: 300,
+                amount: 2,
+                bought: false,
+              }
+
+            ]
+          }
+        },
+        methods: {
+         
+
+        },
+       
+    }).mount("#app");
+    </script>
+  </body>
+</html>

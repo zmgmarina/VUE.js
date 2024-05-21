@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Вы разрабатываете приложение для управления списком контактов.
+У вас есть форма с полями "Имя", "Фамилия" и "Email", где
+пользователь может вводить информацию о новом контакте. После
+добавления контакта он должен отображаться в списке контактов.
+Требуется связать форму с данными и отображать список контактов
+на странице
+    -->
+
+    <div id="app">
+      <!-- <h1>Список контактов</h1>
+      <div>
+        <input type="text" v-model="contactInput.name" />
+        <input type="text" v-model="contactInput.secondName" />
+        <input type="email" v-model="contactInput.eMail" />
+        <button @click="addContact">Добавить контакт</button>
+
+        <div class="contact" v-for="contact in contacts">
+          {{ contact.id }} {{ contact.name }} {{ contact.secondName }} : {{
+          contact.eMail }}
+        </div>
+      </div> -->
+
+      <!-- @submit.prevent - отмена отправки -->
+      <form @submit.prevent="createUser">
+        <label>name - <input  v-model="name" type="text"/></label>
+        <label>lastname - <input v-model="lastname" type="text" /></label>
+        <label>email - <input v-model="email" type="email" /></label>
+        <button>Add user</button>
+      </form>
+      <ul>
+        <li v-for="user in contact" :key="user.id">
+          name - {{ user.name }} lastname - {{ user.lastname }} email - {{ user.email }}
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- <button @click="getDiscount">Get discount</button>
+  <p>Стоимость со скидкой: {{priceWihthDiscount}}</p> -->
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        data() {
+          return {
+              name: "",
+              lastname: "",
+              email: "",
+              contact: [],
+            }
+
+            // contacts: [
+            //   {
+            //     id: 1,
+            //     name: "Egor",
+            //     secondName: "Ivanov",
+            //     eMail: "ivanov@mail.ru",
+            //   },
+            //   {
+            //     id: 2,
+            //     name: "Maria",
+            //     secondName: "Orlova",
+            //     eMail: "orlova@mail.ru",
+            //   },
+            //   {
+            //     id: 3,
+            //     name: "Oleg",
+            //     secondName: "Petrov",
+            //     eMail: "petrov@mail.ru",
+            //   },
+            // ],
+          
+        },
+        methods: {
+          createUser() {
+            const nameTrim = this.name.trim(); //избавились от пробелов
+            const lastnameTrim = this.lastname.trim();
+            const emailTrim = this.email.trim();
+            if (nameTrim && lastnameTrim && emailTrim) {
+              const newUser = {
+                id: this.contact.length + 1,
+                name: nameTrim,
+                lastname: lastnameTrim,
+                email: emailTrim,
+              };
+              this.contact.push(newUser);
+              this.name = '';
+              this.lastname ='';
+              this.email = ''
+
+            }
+              
+          },
+
+          // addContact() {
+          //   if (
+          //     this.contactInput.name &&
+          //     this.contactInput.secondName &&
+          //     this.contactInput.eMail
+          //   ) {
+          //     this.contacts.push({
+          //       id: this.contacts.length + 1, //следующему id...
+          //       ...this.contactInput, //с помощью спред-оператора мы создали новый обЪект(положили туда текущий контакт) поместили в новый участок памяти и ссылку на этот участок в массив записали
+          //     });
+
+          //     this.contactInput.name = "";
+          //     this.contactInput.secondName = "";
+          //     this.contactInput.eMail = "";
+          //   }
+          // },
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

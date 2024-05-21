@@ -25,9 +25,13 @@
           {{product.name }} - Price:{{product.price}} - Amount:
           {{product.amount}}
         </p>
-        <button @click="addProduct(product)">{{product.buttonText}}</button>
+        <button @click="addAmountProduct(product)">
+          {{product.buttonText}}
+        </button>
+        <button @click="decAmountProduct(product)">Удалить</button>
       </div>
     </div>
+  
 
     <script>
       const { createApp, ref } = Vue;
@@ -85,6 +89,13 @@
           addAmountProduct(product) {
             this.countProduct++;
             product.amount++;
+          },
+
+          decAmountProduct(product) {
+            if (product.amount !== 0) {
+              this.countProduct--;
+              product.amount--;
+            }
           },
         },
       }).mount("#app");
