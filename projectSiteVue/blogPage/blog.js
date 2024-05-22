@@ -5,7 +5,7 @@ createApp({
       data: [
         {
           id: 1,
-          img: "image/ImgNews1.png",
+          img: "../image/ImgNews1.png",
           alt: "news photo",
           tag: "Kitchan Design",
           title: "Let’s Get Solution For Building Construction Work",
@@ -13,7 +13,7 @@ createApp({
         },
         {
           id: 2,
-          img: "image/ImgNews2.png",
+          img: "../image/ImgNews2.png",
           alt: "news photo",
           tag: "Living Design",
           title: "Low Cost Latest Invented Interior Designing Ideas.",
@@ -21,7 +21,7 @@ createApp({
         },
         {
           id: 3,
-          img: "image/ImgNews3.png",
+          img: "../image/ImgNews3.png",
           alt: "news photo",
           tag: "Interior Design",
           title: "Best For Any Office & Business Interior Solution",
@@ -29,7 +29,7 @@ createApp({
         },
         {
           id: 4,
-          img: "image/imgNews4.png",
+          img: "../image/imgNews4.png",
           alt: "news photo",
           tag: "Kitchan Design",
           title: "Let’s Get Solution For Building Construction Work",
@@ -37,7 +37,7 @@ createApp({
         },
         {
           id: 5,
-          img: "image/imgNews5.png",
+          img: "../image/imgNews5.png",
           alt: "news photo",
           tag: "Living Design",
           title: "Low Cost Latest Invented Interior Designing Ideas.",
@@ -46,7 +46,7 @@ createApp({
 
         {
           id: 6,
-          img: "image/imgNews6.png",
+          img: "../image/imgNews6.png",
           alt: "news photo",
           tag: "Interior Design",
           title: "Best For Any Office & Business Interior Solution",

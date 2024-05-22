@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Jost&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="blogDetailsStyle.css" />
+  </head>
+  <body>
+    <header class="header center">
+      <div class="header__header-brand">
+        <a href="page.html" class="header__logo-brand"
+          ><img src="../image/Logo.svg" alt="logo-brand"
+        /></a>
+        <h2 class="header__name-brand">Interno</h2>
+      </div>
+
+      <nav class="header__menu">
+        <a class="header__menu-link" href="#">Home</a>
+        <a class="header__menu-link" href="#">Project</a>
+        <a class="header__menu-link" href="#">Blog</a>
+      </nav>
+    </header>
+
+    <div class="banner"></div>
+
+    <div id="app">
+      
+          <!--------------- КОМПОНЕНТ------------------>
+          <News></News>
+          <!------------------------------------------->
+          <!-- <div class="section-quotes">
+            <img src="../image/item.png" alt="" />
+            <h2 class="section-quotes__quotes">
+              The details are not the details. They make the design.
+            </h2>
+          </div>
+        </div>
+
+        <div class="tags">
+          <h3 class="tags__title">Tags</h3>
+            <div class="tags__buttons-tags" v-for="btn in buttons" :key="btn.id>
+            <button class="tags__button-tags">{{ btn.tag }}</button>
+          </div>
+           
+        </div> -->
+       
+    </div>
+
+    <footer class="footer center">
+      <div class="footer__logo">
+        <div class="footer__logo-brand">
+          <a href="page.html"
+            ><img src="../image/Logo.svg" alt="logo-brand"
+          /></a>
+          <h2 class="footer__name-brand">Interno</h2>
+        </div>
+        <p class="footer__text">
+          It is a long established fact that a reader will be distracted
+          lookings.
+        </p>
+        <div class="footer__socialNetwork-link">
+          <a href=""><img src="../image/twitter.svg" alt="" /></a>
+          <p class="footer__in">in</p>
+        </div>
+      </div>
+      <div class="footer__page">
+        <p class="footer__title-pages">Pages</p>
+        <a class="footer__page-link" href="page.html">Home</a>
+        <a class="footer__page-link" href="#">Project</a>
+        <a class="footer__page-link" href="#">Blog</a>
+      </div>
+      <div class="footer__contacts">
+        <p class="footer__title-contact">Contact</p>
+        <p>55 East Birchwood Ave. Brooklyn, New York 11201</p>
+        <p>contact@interno.com</p>
+        <p>(123) 456 - 7890</p>
+      </div>
+    </footer>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="components/news.js"></script>
+    <!-- <script src="components/tags.js"></script> -->
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        components: {
+          News,
+        },
+      }).mount("#app");
+    </script>
+  </body>
+</html>

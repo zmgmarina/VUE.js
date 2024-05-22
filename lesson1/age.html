@@ -42,6 +42,8 @@
       <div class="animate" v-if="showContent">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis architecto facere dolores ut iste officia illo accusantium veniam ad quis, porro perspiciatis eos. Officia, quo nostrum? Fugiat ad sint non.</div>
       <hr>
       <br>
+
+      <h2>{{ message }}</h2>
       <!-- 1. Создайте кнопку "Генерировать случайное число". При клике на
         кнопку должно отображаться случайное число в заданном диапазоне (например, от 1 до 10).
         2. При клике на кнопку, если полученное значение меньше 5, необходимо вывести на страницу, “Число меньше 5”
@@ -55,8 +57,18 @@
     </div>
 
     <script>
-      const { createApp, ref } = Vue;
 
+      // const HelloVueApp = {
+      //   data() {
+      //     return {
+      //       message: 'Hello'
+      //     }
+      //   }
+      // }
+      // Vue.createApp(HelloVueApp).mount('#app');
+
+
+      const { createApp, ref } = Vue;
       createApp({
         data() {
           return {
@@ -68,7 +80,7 @@
         },
         methods: {
           randomNumber() {
-            this.number = Math.floor(Math.random() * 10 + 1); //диапазон 10, +1 чтобы влючено число 10
+            this.number = Math.floor(Math.random() * 10 + 1); //диапазон 10, +1 чтобы было включено число 10
           },
         },
         computed: {
